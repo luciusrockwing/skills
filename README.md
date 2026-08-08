@@ -1,6 +1,6 @@
 # luciusrockwing/skills
 
-RA's personal agent skills, collected from three local sources and installable into `~/.agents/skills` with one command.
+LRW's personal agent skills, collected from three local sources and installable into `~/.agents/skills` with one command.
 
 ## Install
 
