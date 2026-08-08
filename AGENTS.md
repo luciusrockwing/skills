@@ -6,7 +6,7 @@ Single public source of truth for RA's personal agent skills, installable into `
 
 ## Layout
 
-- `skills/vault/` — obsidian/research/second-brain skills (from `secondbrain/.agents/skills`)
+- `skills/vault/` — obsidian/research/second-brain skills (from `~/.agents/skills`)
 - `skills/meta/` — caveman + agent-meta skills (from `~/.agents/skills`)
 - `skills/coding/` — ponytail, superpowers, drawio (from `~/.pi/agent/git/github.com/*/skills`)
 - `scripts/sync-from-local.sh` — pull latest from the 3 local sources

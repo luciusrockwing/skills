@@ -25,7 +25,7 @@ curl -fsSL https://raw.githubusercontent.com/luciusrockwing/skills/main/install.
 
 | Dir | Source | Count | Contents |
 | --- | --- | --- | --- |
-| `skills/vault/` | `secondbrain/.agents/skills` | 32 | obsidian, research, second-brain, compress, defuddle, diagnose, frontend-design, git, json-canvas, misc-*, personal-*, server-healthcheck, shadcn-improve, spec-driven-development, to-issues, to-prd, web-search, write-a-skill, zoom-out |
+| `skills/vault/` | `~/.agents/skills` | 32 | obsidian, research, second-brain, compress, defuddle, diagnose, frontend-design, git, json-canvas, misc-*, personal-*, server-healthcheck, shadcn-improve, spec-driven-development, to-issues, to-prd, web-search, write-a-skill, zoom-out |
 | `skills/meta/` | `~/.agents/skills` | 16 | caveman*, engineering, improve, in-progress, misc, personal, productivity, research, session-handoff |
 | `skills/coding/` | `~/.pi/agent/git/github.com/*/skills` | 21 | ponytail +5, superpowers/*, drawio-skill |
 

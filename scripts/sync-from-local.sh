@@ -8,7 +8,7 @@ VAULT="$REPO_ROOT/skills/vault"
 META="$REPO_ROOT/skills/meta"
 CODING="$REPO_ROOT/skills/coding"
 
-SRC_VAULT="${SECONDBRAIN:-/storage/emulated/0/Documents/secondbrain}/.agents/skills"
+SRC_VAULT="${SECONDBRAIN:-$HOME/.agents/skills}"
 SRC_META="$HOME/.agents/skills"
 SRC_CODING="$HOME/.pi/agent/git/github.com"
 
