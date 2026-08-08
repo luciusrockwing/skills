@@ -31,7 +31,8 @@ if [ -z "$SRC" ]; then
 fi
 
 copy_one() {
-  local rel="$1" src="$2" dst="$TARGET/$rel"
+  local rel="$1" src="$2"
+  local dst="$TARGET/$rel"
   if [ -e "$dst" ] && [ "$FORCE" -eq 0 ]; then
     echo "skip (exists): $rel"; return
   fi
