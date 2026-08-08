@@ -42,3 +42,24 @@ bash scripts/sync-from-local.sh
 ```
 
 Pulls the latest from the three local sources into this repo (manual commit after).
+
+## Credits & References
+
+Skills are collected from the sources below. External skills are credited to their original authors/repos; skills marked **(original)** are authored by RA and have no external upstream.
+
+### External upstreams
+
+| Original repo | Skills |
+| --- | --- |
+| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | `ponytail`, `ponytail-audit`, `ponytail-debt`, `ponytail-gain`, `ponytail-help`, `ponytail-review` |
+| [obra/superpowers](https://github.com/obra/superpowers) | `brainstorming`, `dispatching-parallel-agents`, `executing-plans`, `finishing-a-development-branch`, `receiving-code-review`, `requesting-code-review`, `subagent-driven-development`, `systematic-debugging`, `test-driven-development`, `using-git-worktrees`, `using-superpowers`, `verification-before-completion`, `writing-plans`, `writing-skills` |
+| [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill) | `drawio-skill` |
+| [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | `caveman-compress`, `caveman-help` |
+| [sverweij/dependency-cruiser](https://github.com/sverweij/dependency-cruiser) | `in-progress` |
+| [obsidianmd/jsoncanvas](https://github.com/obsidianmd/jsoncanvas) | `json-canvas` |
+| [mariano-aguero/spec-driven-development-skill](https://github.com/mariano-aguero/spec-driven-development-skill) | `spec-driven-development` |
+
+### Original (RA-authored, no external upstream)
+
+- **vault/**: `compress`, `defuddle`, `diagnose`, `frontend-design`, `git`, `misc-scaffold-exercises`, `misc-setup-pre-commit`, `obsidian-bases`, `obsidian-cli`, `obsidian-markdown`, `personal-edit-article`, `personal-obsidian-vault`, `research-add-fields`, `research-add-items`, `research-deep`, `research-report`, `second-brain`, `second-brain-ingest`, `second-brain-lint`, `second-brain-query`, `server-healthcheck`, `shadcn-improve`, `to-issues`, `to-prd`, `web-search`, `write-a-skill`, `zoom-out`
+- **meta/**: `cavecrew`, `caveman`, `caveman-commit`, `caveman-review`, `caveman-stats`, `deprecated`, `engineering`, `improve`, `misc`, `personal`, `productivity`, `research`, `session-handoff`
