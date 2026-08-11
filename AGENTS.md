@@ -6,22 +6,22 @@ Single public source of truth for RA's personal agent skills, installable into `
 
 ## Layout
 
-- `knowledge/` — obsidian, second-brain, json-canvas, edit-article
-- `research/` — research pipeline (deep, report, add-items, etc.)
-- `code/` — TDD, debugging, superpowers, ponytail, codebase-design, prototype
-- `design/` — frontend-design, drawio-skill, shadcn-improve
-- `author/` — write-a-skill, zoom-out, writing-great-skills, to-issues, to-prd
-- `modes/` — caveman*, session-handoff, grilling, teach, improve, spec-driven
-- `web/` — web-search
-- `config/` — git, diagnose, compress, setup, server-healthcheck
-- `archive/` — all deprecated skills
-- `experiments/` — in-progress skills
+- `skills/knowledge/` — obsidian, second-brain, json-canvas, edit-article
+- `skills/research/` — research pipeline (deep, report, add-items, etc.)
+- `skills/code/` — TDD, debugging, superpowers, ponytail, codebase-design, prototype
+- `skills/design/` — frontend-design, drawio-skill, shadcn-improve
+- `skills/author/` — write-a-skill, zoom-out, writing-great-skills, to-issues, to-prd
+- `skills/modes/` — caveman*, session-handoff, grilling, teach, improve, spec-driven
+- `skills/web/` — web-search
+- `skills/config/` — git, diagnose, compress, setup, server-healthcheck
+- `skills/archive/` — all deprecated skills
+- `skills/experiments/` — in-progress skills
 - `scripts/sync-from-local.sh` — pull latest from local sources
 - `install.sh` — curl|bash installer
 
 ## Contracts
 
-- One target only: `~/.agents/` (or repo-local `.agents/` via `--dir`).
+- One target only: `~/.agents/skills/` (or repo-local `.agents/skills/` via `--dir`).
 - No CLI dialect splits (no `.claude`/`.codex`/opencode variants).
 - `research-*` skills kept once, canonically in `research/`.
 - Skill files use the `$SKILLS_HOME` token for runtime paths; `install.sh` rewrites it to the target dir.
@@ -37,7 +37,7 @@ Single public source of truth for RA's personal agent skills, installable into `
 
 - `bash -n install.sh`
 - `./install.sh --dry-run` lists copies
-- fresh clone + `./install.sh` populates `~/.agents/<category>/<skill>/SKILL.md`
+- fresh clone + `./install.sh` populates `~/.agents/skills/<category>/<skill>/SKILL.md`
 
 # DOX framework
 

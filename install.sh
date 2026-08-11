@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# luciusrockwing/skills installer — copies skills into ~/.agents/ (or --dir)
+# luciusrockwing/skills installer — copies skills into ~/.agents/skills/ (or --dir)
 set -euo pipefail
 
 REPO_RAW="https://raw.githubusercontent.com/luciusrockwing/skills/main"
-DEFAULT_DIR="$HOME/.agents"
+DEFAULT_DIR="$HOME/.agents/skills"
 TARGET="$DEFAULT_DIR"
 CAT=""
 FORCE=0
@@ -31,8 +31,7 @@ esac
 
 SRC="${SKILLS_SRC_DIR:-}"
 if [ -z "$SRC" ]; then
-  # running from a clone: use local dirs directly
-  if [ -d "knowledge" ]; then SRC="."; fi
+  if [ -d "skills/knowledge" ]; then SRC="skills"; fi
 fi
 
 copy_one() {
@@ -44,9 +43,8 @@ copy_one() {
   if [ "$DRY" -eq 1 ]; then echo "copy: $rel -> $dst"; return; fi
   mkdir -p "$(dirname "$dst")"
   cp -r "$src" "$dst"
-  # rewrite $SKILLS_HOME token to actual target dir
   if [ -f "$dst/SKILL.md" ]; then
-    sed -i "s#\$SKILLS_HOME#$TARGET#g" "$dst/SKILL.md"
+    sed -i "s#$SKILLS_HOME#$TARGET#g" "$dst/SKILL.md"
   fi
   echo "ok: $rel"
 }
@@ -63,7 +61,6 @@ if [ -n "$SRC" ]; then
   exit 0
 fi
 
-# no local dirs: stream from raw repo
 TMP=$(mktemp -d); trap 'rm -rf "$TMP"' EXIT
 echo "fetching index from $REPO_RAW ..."
 for cat in ${CAT:-$CATS}; do

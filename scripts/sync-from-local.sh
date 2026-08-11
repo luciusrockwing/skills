@@ -5,6 +5,7 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SRC="${SECONDBRAIN:-$HOME/workspace/secondbrain/.agents/skills}"
+DST="$REPO_ROOT/skills"
 
 sync_dir() {
   local src="$1" dst="$2"
@@ -21,15 +22,15 @@ sync_dir() {
   done
 }
 
-echo "== knowledge =="; sync_dir "$SRC" "$REPO_ROOT/knowledge"
-echo "== research ==";  sync_dir "$SRC" "$REPO_ROOT/research"
-echo "== code ==";      sync_dir "$SRC" "$REPO_ROOT/code"
-echo "== design ==";    sync_dir "$SRC" "$REPO_ROOT/design"
-echo "== author ==";    sync_dir "$SRC" "$REPO_ROOT/author"
-echo "== modes ==";     sync_dir "$SRC" "$REPO_ROOT/modes"
-echo "== web ==";       sync_dir "$SRC" "$REPO_ROOT/web"
-echo "== config ==";    sync_dir "$SRC" "$REPO_ROOT/config"
-echo "== experiments =="; sync_dir "$SRC" "$REPO_ROOT/experiments"
+echo "== knowledge =="; sync_dir "$SRC" "$DST/knowledge"
+echo "== research ==";  sync_dir "$SRC" "$DST/research"
+echo "== code ==";      sync_dir "$SRC" "$DST/code"
+echo "== design ==";    sync_dir "$SRC" "$DST/design"
+echo "== author ==";    sync_dir "$SRC" "$DST/author"
+echo "== modes ==";     sync_dir "$SRC" "$DST/modes"
+echo "== web ==";       sync_dir "$SRC" "$DST/web"
+echo "== config ==";    sync_dir "$SRC" "$DST/config"
+echo "== experiments =="; sync_dir "$SRC" "$DST/experiments"
 
-chmod -R u+rw,go+r "$REPO_ROOT"
+chmod -R u+rw,go+r "$DST"
 echo "done. review with: git status"

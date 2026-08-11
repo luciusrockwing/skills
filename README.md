@@ -1,6 +1,6 @@
 # luciusrockwing/skills
 
-RA's personal agent skills — installable into `~/.agents/` with one command.
+RA's personal agent skills — installable into `~/.agents/skills/` with one command.
 
 ## Install
 
@@ -38,7 +38,7 @@ curl -fsSL .../install.sh | bash -s -- --dry-run
 
 ## Notes
 
-- Single target only: `~/.agents/` (or repo-local via `--dir`). No Claude/Codex/OpenCode splits.
+- Single target only: `~/.agents/skills/` (or repo-local via `--dir`). No Claude/Codex/OpenCode splits.
 - Hard-coded home paths are rewritten to `$SKILLS_HOME` at install time.
 - `scripts/sync-from-local.sh` is for repo maintainers only — not needed for end users.
 
