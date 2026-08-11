@@ -1,117 +1,45 @@
-# AGENTS.md — luciusrockwing/skills
+# AGENTS.md — skills/
 
 ## Purpose
 
-Single public source of truth for RA's personal agent skills, installable into `~/.agents/skills` via one link.
+All installable agent skills for the `luciusrockwing/skills` repository. This folder is the single source of truth for every skill that ships to `~/.agents/skills/`.
 
-## Layout
+## Ownership
 
-- `skills/vault/` — obsidian/research/second-brain skills (from `~/.agents/skills`)
-- `skills/meta/` — caveman + agent-meta skills (from `~/.agents/skills`)
-- `skills/coding/` — ponytail, superpowers, drawio (from `~/.pi/agent/git/github.com/*/skills`)
-- `scripts/sync-from-local.sh` — pull latest from the 3 local sources
-- `install.sh` — curl|bash installer
+Owned by RA. Each skill is independently installable. Category folders group skills by workflow domain; they do not add their own rules beyond what this doc and the root AGENTS.md specify.
 
-## Contracts
+## Local Contracts
 
-- One target only: `~/.agents/skills` (or repo-local `.agents/skills` via `--dir`).
-- No CLI dialect splits (no `.claude`/`.codex`/opencode variants).
-- `research-*` skills kept once, canonically in `skills/vault/`.
-- Skill files use the `$SKILLS_HOME` token for runtime paths; `install.sh` rewrites it to the target dir.
+- **One SKILL.md per skill.** Every skill folder must contain exactly one `SKILL.md` — that is the canonical, loadable unit. README, scripts, references, and assets are optional supplements.
+- **`$SKILLS_HOME` token.** Skill files use `$SKILLS_HOME` for runtime paths. `install.sh` rewrites it to the target directory at install time. Never hardcode `~/.agents/skills` inside a skill.
+- **No CLI dialect splits.** A skill ships once. No `.claude/`, `.codex/`, or `opencode` variants of the same skill.
+- **Category READMEs.** Each category folder (`vault/`, `meta/`, `coding/`) keeps a `README.md` that lists its skills and their one-line purpose. The README is a navigation aid, not a contract — the contract lives here and in the skill's own `SKILL.md`.
 
-## Update workflow
+## Work Guidance
 
-1. Edit skills locally in their source.
-2. `bash scripts/sync-from-local.sh` to pull into this repo.
-3. Review diff, `git add -A && git commit && git push`.
+- **Adding a skill:** Create `<category>/<skill-name>/SKILL.md`. If it's a new category, create the folder and a `README.md` listing its skills. Update this doc's Child DOX Index.
+- **Editing a skill:** Edit `SKILL.md`. Keep the YAML frontmatter (`name`, `description`) current — the plugin uses it for triggering and discovery.
+- **Deprecating a skill:** Move it to the deprecated area. Update the relevant README. Remove it from the Child DOX Index under its former category.
+- **Sync workflow (for repo maintainers):** `bash scripts/sync-from-local.sh` pulls latest from local sources. Review diff, commit, push.
 
 ## Verification
 
-- `bash -n install.sh`
-- `./install.sh --dry-run` lists copies
-- fresh clone + `./install.sh` populates `~/.agents/skills/<name>/SKILL.md`
-
-# DOX framework
-
-- DOX is highly performant AGENTS.md hierarchy installed here
-- Agent must follow DOX instructions across any edits
-
-## Core Contract
-
-- AGENTS.md files are binding work contracts for their subtrees
-- Work products, source materials, instructions, records, assets, and durable docs must stay understandable from the nearest applicable AGENTS.md plus every parent AGENTS.md above it
-
-## Read Before Editing
-
-1. Read the root AGENTS.md
-2. Identify every file or folder you expect to touch
-3. Walk from the repository root to each target path
-4. Read every AGENTS.md found along each route
-5. If a parent AGENTS.md lists a child AGENTS.md whose scope contains the path, read that child and continue from there
-6. Use the nearest AGENTS.md as the local contract and parent docs for repo-wide rules
-7. If docs conflict, the closer doc controls local work details, but no child doc may weaken DOX
-
-Do not rely on memory. Re-read the applicable DOX chain in the current session before editing.
-
-## Update After Editing
-
-Every meaningful change requires a DOX pass before the task is done.
-
-Update the closest owning AGENTS.md when a change affects:
-
-- purpose, scope, ownership, or responsibilities
-- durable structure, contracts, workflows, or operating rules
-- required inputs, outputs, permissions, constraints, side effects, or artifacts
-- user preferences about behavior, communication, process, organization, or quality
-- AGENTS.md creation, deletion, move, rename, or index contents
-
-Update parent docs when parent-level structure, ownership, workflow, or child index changes. Update child docs when parent changes alter local rules. Remove stale or contradictory text immediately. Small edits that do not change behavior or contracts may leave docs unchanged, but the DOX pass still must happen.
-
-## Hierarchy
-
-- Root AGENTS.md is the DOX rail: project-wide instructions, global preferences, durable workflow rules, and the top-level Child DOX Index
-- Child AGENTS.md files own domain-specific instructions and their own Child DOX Index
-- Each parent explains what its direct children cover and what stays owned by the parent
-- The closer a doc is to the work, the more specific and practical it must be
-
-## Child Doc Shape
-
-- Create a child AGENTS.md when a folder becomes a durable boundary with its own purpose, rules, responsibilities, workflow, materials, or quality standards
-- Work Guidance must reflect the current standards of the project or user instructions; if there are no specific standards or instructions yet, leave it empty
-- Verification must reflect an existing check; if no verification framework exists yet, leave it empty and update it when one exists
-
-Default section order:
-- Purpose
-- Ownership
-- Local Contracts
-- Work Guidance
-- Verification
-- Child DOX Index
-
-## Style
-
-- Keep docs concise, current, and operational
-- Document stable contracts, not diary entries
-- Put broad rules in parent docs and concrete details in child docs
-- Prefer direct bullets with explicit names
-- Do not duplicate rules across many files unless each scope needs a local version
-- Delete stale notes instead of explaining history
-- Trim obvious statements, repeated rules, misplaced detail, and warnings for risks that no longer exist
-
-## Closeout
-
-1. Re-check changed paths against the DOX chain
-2. Update nearest owning docs and any affected parents or children
-3. Refresh every affected Child DOX Index
-4. Remove stale or contradictory text
-5. Run existing verification when relevant
-6. Report any docs intentionally left unchanged and why
-
-## User Preferences
-
-When the user requests a durable behavior change, record it here or in the relevant child AGENTS.md
+- `bash -n install.sh` — installer parses
+- `./install.sh --dry-run` — lists what would copy without writing
+- Every skill folder has exactly one `SKILL.md`
+- `$SKILLS_HOME` appears in skill files, never a hardcoded path
+- Category READMEs match their actual contents
 
 ## Child DOX Index
 
-- [`skills/AGENTS.md`](skills/AGENTS.md) — all installable skills: contracts, category structure, workflow, verification. Owns every skill folder and category folder.
-- Root-owned files: `README.md`, `LICENSE`, `banner.jpg`, `video-thumbnail.jpg`, `.skill-lock.json`, `install.sh`, `scripts/sync-from-local.sh`, and root-level project documentation.
+### vault/ (32 skills)
+
+Obsidian, research, second-brain, compress, defuddle, diagnose, frontend-design, git, json-canvas, misc-scaffold-exercises, misc-setup-pre-commit, obsidian-bases, obsidian-cli, obsidian-markdown, personal-edit-article, personal-obsidian-vault, research-add-fields, research-add-items, research-deep, research-report, second-brain-ingest, second-brain-lint, second-brain-query, server-healthcheck, shadcn-improve, spec-driven-development, to-issues, to-prd, web-search, write-a-skill, zoom-out, deprecated-design-an-interface, deprecated-qa, deprecated-request-refactor-plan
+
+### meta/ (16 skills)
+
+cavecrew, caveman, caveman-commit, caveman-compress, caveman-help, caveman-review, caveman-stats, deprecated, engineering, improve, in-progress, misc, personal, productivity, research, session-handoff
+
+### coding/ (21 skills)
+
+brainstorming, dispatching-parallel-agents, drawio-skill, executing-plans, finishing-a-development-branch, ponytail, ponytail-audit, ponytail-debt, ponytail-gain, ponytail-help, ponytail-review, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills
