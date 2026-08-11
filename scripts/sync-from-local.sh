@@ -1,29 +1,19 @@
 #!/usr/bin/env bash
-# Pull latest skills from the 3 local sources into this repo.
+# Pull latest skills from local secondbrain source into this repo.
 # Run from repo root: bash scripts/sync-from-local.sh
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-VAULT="$REPO_ROOT/skills/vault"
-META="$REPO_ROOT/skills/meta"
-CODING="$REPO_ROOT/skills/coding"
-
-SRC_VAULT="${SECONDBRAIN:-$HOME/.agents/skills}"
-SRC_META="$HOME/.agents/skills"
-SRC_CODING="$HOME/.pi/agent/git/github.com"
-
-DUPES="research-add-fields research-add-items research-deep research-report"
+SRC="${SECONDBRAIN:-$HOME/workspace/secondbrain/.agents/skills}"
 
 sync_dir() {
-  local src="$1" dst="$2" exclude="$3"
+  local src="$1" dst="$2"
   [ -d "$src" ] || { echo "missing source: $src"; return; }
   for d in "$src"/*/; do
     [ -d "$d" ] || continue
     n=$(basename "$d")
-    case " $exclude " in *" $n "*) continue;; esac
     rm -rf "$dst/$n"
     cp -r "$d" "$dst/$n"
-    # canonicalize hard paths -> $SKILLS_HOME
     if [ -f "$dst/$n/SKILL.md" ]; then
       sed -i -E 's#~/\.(claude|codex)/skills#$SKILLS_HOME#g' "$dst/$n/SKILL.md"
     fi
@@ -31,16 +21,15 @@ sync_dir() {
   done
 }
 
-echo "== vault ==";   sync_dir "$SRC_VAULT" "$VAULT" ""
-echo "== meta ==";    sync_dir "$SRC_META"  "$META"  "$DUPES"
-# coding source is nested (github.com/owner/repo/skills); explicit loop
-echo "== coding ==";  rm -rf "$CODING"/* 2>/dev/null || true
-for d in "$SRC_CODING"/*/*/skills/*/; do
-  [ -d "$d" ] || continue
-  n=$(basename "$d")
-  cp -r "$d" "$CODING/$n"
-  echo "synced: $n"
-done
+echo "== knowledge =="; sync_dir "$SRC" "$REPO_ROOT/knowledge"
+echo "== research ==";  sync_dir "$SRC" "$REPO_ROOT/research"
+echo "== code ==";      sync_dir "$SRC" "$REPO_ROOT/code"
+echo "== design ==";    sync_dir "$SRC" "$REPO_ROOT/design"
+echo "== author ==";    sync_dir "$SRC" "$REPO_ROOT/author"
+echo "== modes ==";     sync_dir "$SRC" "$REPO_ROOT/modes"
+echo "== web ==";       sync_dir "$SRC" "$REPO_ROOT/web"
+echo "== config ==";    sync_dir "$SRC" "$REPO_ROOT/config"
+echo "== experiments =="; sync_dir "$SRC" "$REPO_ROOT/experiments"
 
-chmod -R u+rw,go+r "$REPO_ROOT/skills"
+chmod -R u+rw,go+r "$REPO_ROOT"
 echo "done. review with: git status"

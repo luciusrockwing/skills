@@ -1,6 +1,6 @@
 # luciusrockwing/skills
 
-RA's personal agent skills — installable into `~/.agents/skills` with one command.
+RA's personal agent skills — installable into `~/.agents/` with one command.
 
 ## Install
 
@@ -11,11 +11,8 @@ curl -fsSL https://raw.githubusercontent.com/luciusrockwing/skills/main/install.
 Options:
 
 ```bash
-# one category only
-curl -fsSL .../install.sh | bash -s -- --cat vault
-
 # custom target dir (e.g. repo-local)
-curl -fsSL .../install.sh | bash -s -- --dir ./myrepo/.agents/skills
+curl -fsSL .../install.sh | bash -s -- --dir ./myrepo/.agents
 
 # overwrite existing
 curl -fsSL .../install.sh | bash -s -- --force
@@ -28,13 +25,20 @@ curl -fsSL .../install.sh | bash -s -- --dry-run
 
 | Dir | Source | Count | Contents |
 | --- | --- | --- | --- |
-| `skills/vault/` | `~/.agents/skills` | 32 | obsidian, research, second-brain, compress, defuddle, diagnose, frontend-design, git, json-canvas, misc-*, personal-*, server-healthcheck, shadcn-improve, spec-driven-development, to-issues, to-prd, web-search, write-a-skill, zoom-out |
-| `skills/meta/` | `~/.agents/skills` | 16 | caveman*, engineering, improve, in-progress, misc, personal, productivity, research, session-handoff |
-| `skills/coding/` | `~/.pi/agent/git/github.com/*/skills` | 21 | ponytail +5, superpowers/*, drawio-skill |
+| `knowledge/` | `~/.agents/skills` | 10 | obsidian, second-brain, json-canvas, edit-article |
+| `research/` | `~/.agents/skills` | 5 | research pipeline (deep, report, add-items, etc.) |
+| `code/` | mixed | 32 | TDD, debugging, superpowers, ponytail, codebase-design, prototype |
+| `design/` | mixed | 3 | frontend-design, drawio-skill, shadcn-improve |
+| `author/` | `~/.agents/skills` | 5 | write-a-skill, zoom-out, writing-great-skills, to-issues, to-prd |
+| `modes/` | `~/.agents/skills` | 20 | caveman*, session-handoff, grilling, teach, improve, spec-driven |
+| `web/` | `~/.agents/skills` | 1 | web-search |
+| `config/` | `~/.agents/skills` | 12 | git, diagnose, compress, setup, server-healthcheck |
+| `archive/` | `~/.agents/skills` | 7 | all deprecated skills |
+| `experiments/` | `~/.agents/skills` | 7 | in-progress skills |
 
 ## Notes
 
-- Single target only: `~/.agents/skills` (or repo-local via `--dir`). No Claude/Codex/OpenCode splits.
+- Single target only: `~/.agents/` (or repo-local via `--dir`). No Claude/Codex/OpenCode splits.
 - Hard-coded home paths are rewritten to `$SKILLS_HOME` at install time.
 - `scripts/sync-from-local.sh` is for repo maintainers only — not needed for end users.
 
@@ -53,5 +57,11 @@ curl -fsSL .../install.sh | bash -s -- --dry-run
 
 ### Original (RA-authored, no external upstream)
 
-- **vault/**: `compress`, `defuddle`, `diagnose`, `frontend-design`, `git`, `misc-scaffold-exercises`, `misc-setup-pre-commit`, `obsidian-bases`, `obsidian-cli`, `obsidian-markdown`, `personal-edit-article`, `personal-obsidian-vault`, `research-add-fields`, `research-add-items`, `research-deep`, `research-report`, `second-brain`, `second-brain-ingest`, `second-brain-lint`, `second-brain-query`, `server-healthcheck`, `shadcn-improve`, `to-issues`, `to-prd`, `web-search`, `write-a-skill`, `zoom-out`
-- **meta/**: `cavecrew`, `caveman`, `caveman-commit`, `caveman-review`, `caveman-stats`, `deprecated`, `engineering`, `improve`, `misc`, `personal`, `productivity`, `research`, `session-handoff`
+- **knowledge/**: obsidian-bases, obsidian-cli, obsidian-markdown, personal-edit-article, personal-obsidian-vault, second-brain (+ ingest, lint, query), json-canvas
+- **research/**: research, research-add-fields, research-add-items, research-deep, research-report
+- **code/**: codebase-design, domain-modeling, prototype, improve-codebase-architecture, code-review, diagnosing-bugs, implement, tdd, triage, wayfinder, research-matt, resolving-merge-conflicts
+- **design/**: frontend-design, shadcn-improve
+- **author/**: write-a-skill, zoom-out, writing-great-skills, to-issues, to-prd
+- **modes/**: cavecrew, caveman (+ commit, compress, help, review, stats), edit-article, grill-me, grill-with-docs, grilling, handoff, improve, obsidian-vault, session-handoff, spec-driven-development, teach, to-spec, to-tickets, ask-matt
+- **config/**: compress, defuddle, diagnose, git, git-guardrails-claude-code, migrate-to-shoehorn, scaffold-exercises, setup-pre-commit, server-healthcheck, setup-matt-pocock-skills
+- **experiments/**: claude-handoff, loop-me, setup-ts-deep-modules, wizard, writing-beats, writing-fragments, writing-shape
